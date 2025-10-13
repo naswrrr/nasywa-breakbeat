@@ -450,17 +450,17 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item"><a href="#">Pelanggan</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Pelanggan</li>
+                    <li class="breadcrumb-item active" aria-current="page"> Tambah Pelanggan</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h4">Tambah Pelanggan</h1>
-                    <p class="mb-0">Form untuk menambahkan data pelanggan baru.</p>
+                    <h1 class="h4">Data Pelanggan</h1>
+                    <p class="mb-0">List data seluruh pelanggan</p>
                 </div>
                 <div>
                     <a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/forms/"
-                        class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>
+                        class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Tambah Pelanggan</a>
                 </div>
             </div>
         </div>
@@ -469,7 +469,7 @@
             <div class="col-12 mb-4">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body">
-                        @if(session('success'))
+                        @if(session('succes'))
                         <div class="alert alert-info">
                             {!! session('success') !!}
                         </div>
