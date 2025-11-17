@@ -1,11 +1,9 @@
 <?php
-
 namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CreateFirstUser extends Seeder
 {
@@ -14,9 +12,12 @@ class CreateFirstUser extends Seeder
      */
     public function run(): void
     {
-        $data['name'] = 'Gatot Kaca';
-        $data['email']  = 'gatot@pcr.id';
-        $data['password']   = Hash::make('gatotkaca123');
-        User::create($data);
+        User::factory()->count(1000)->create();
+
+        User::create([
+            'name'     => 'Nasywa',
+            'email'    => 'nasywa@gmail.com',
+            'password' => Hash::make('Nasywa123'),
+        ]);
     }
 }
