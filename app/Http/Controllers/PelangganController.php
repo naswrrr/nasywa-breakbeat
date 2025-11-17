@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 
@@ -10,8 +11,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        $data['dataPelanggan'] = Pelanggan::all(); //eloquent yang mengambil seluruh data yang belum dihapus
-		return view('admin.pelanggan.index',$data);
+        $data['dataPelanggan'] = Pelanggan::paginate(10);
+        return view('admin.pelanggan.index', $data);
     }
 
     /**
@@ -38,7 +39,7 @@ class PelangganController extends Controller
 
         Pelanggan::create($data);
 
-        return redirect()->route('pelanggan.create')->with('success', 'Penambahan Data Berhasil!');
+        return redirect()->route('pelanggan.index')->with('success', 'Penambahan Data Berhasil!');
     }
 
     /**
@@ -54,7 +55,8 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pelanggan = Pelanggan::findOrFail($id);
+        return view('admin.pelanggan.edit', compact('pelanggan'));
     }
 
     /**
@@ -70,6 +72,9 @@ class PelangganController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pelanggan = Pelanggan::findOrFail($id);
+        $pelanggan->delete();
+
+        return redirect()->route('pelanggan.index')->with('success', 'Data Pelanggan Berhasil Dihapus!');
     }
 }
