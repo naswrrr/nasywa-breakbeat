@@ -24,7 +24,7 @@ class UserController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('Admin.User.index', $pageData);
+        return view('admin.user.index', $pageData);
     }
 
     /**
@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('Admin.User.create');
+        return view('admin.user.create');
     }
 
     /**
@@ -50,7 +50,7 @@ class UserController extends Controller
 
         User::create($data);
 
-        return redirect()->route('users.index')
+        return redirect()->route('user.index')
             ->with('success', 'User berhasil dibuat.');
     }
 
@@ -68,7 +68,7 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
-        return view('Admin.User.edit', compact('user'));
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -89,7 +89,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('users.index')
+        return redirect()->route('user.index')
             ->with('success', 'User berhasil diupdate.');
     }
 
@@ -101,7 +101,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('users.index')
+        return redirect()->route('user.index')
             ->with('success', 'User berhasil dihapus.');
     }
 }
