@@ -13,6 +13,7 @@ class CreatePelangganDummy extends Seeder
     {
 
         $faker = \Faker\Factory::create();
+        $faker->unique(true);
 
         foreach (range(1, 1000) as $index) {
             DB::table('pelanggan')->insert([
@@ -20,7 +21,7 @@ class CreatePelangganDummy extends Seeder
                 'last_name'  => $faker->lastName,
                 'birthday'   => $faker->date('Y-m-d', '2005-12-31'),
                 'gender'     => $faker->randomElement(['Male', 'Female', 'Other']),
-                'email'      => $faker->unique()->safeEmail,
+                'email'      => strtolower($faker->userName) . '+' . uniqid() . '@example.com',
                 'phone'      => $faker->phoneNumber,
             ]);
         }
