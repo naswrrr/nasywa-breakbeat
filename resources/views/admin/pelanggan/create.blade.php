@@ -21,7 +21,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title>Volt Premium Bootstrap Dashboard - Forms</title>
+    <title>Forms</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="title" content="Volt Premium Bootstrap Dashboard - Forms">
     <meta name="author" content="Themesberg">
@@ -50,25 +50,26 @@
         content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-pro-bootstrap-5-dashboard/volt-pro-preview.jpg">
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets-admin') }}/img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="120x120"
+        href="{{ asset('assets-admin/assets/img/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32"
-        href="{{ asset('assets-admin') }}/img/favicon/favicon-32x32.png">
+        href="{{ asset('assets-admin/assets/img/favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16"
-        href="{{ asset('assets-admin') }}/img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="{{ asset('assets-admin') }}/img/favicon/site.webmanifest">
-    <link rel="mask-icon" href="{{ asset('assets-admin') }}/img/favicon/safari-pinned-tab.svg" color="#ffffff">
+        href="{{ asset('assets-admin/assets/img/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('assets-admin/assets/img/favicon/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('assets-admin/assets/img/favicon/safari-pinned-tab.svg') }}" color="#ffffff">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Sweet Alert -->
-    <link type="text/css" href="{{ asset('assets-admin') }}/vendor/sweetalert2/dist/sweetalert2.min.css"
+    <link type="text/css" href="{{ asset('assets-admin/vendor/sweetalert2/dist/sweetalert2.min.css') }}"
         rel="stylesheet">
 
     <!-- Notyf -->
-    <link type="text/css" href="{{ asset('assets-admin') }}/vendor/notyf/notyf.min.css" rel="stylesheet">
+    <link type="text/css" href="{{ asset('assets-admin/vendor/notyf/notyf.min.css') }}" rel="stylesheet">
 
     <!-- Volt CSS -->
-    <link type="text/css" href="{{ asset('assets-admin') }}/css/volt.css" rel="stylesheet">
+    <link type="text/css" href="{{ asset('assets-admin/css/volt.css') }}" rel="stylesheet">
 
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
@@ -80,9 +81,10 @@
 
 
     <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
-        <a class="navbar-brand me-lg-5" href="../../index.html">
-            <img class="navbar-brand-dark" src="{{ asset('assets-admin') }}/img/brand/light.svg" alt="Volt logo" /> <img
-                class="navbar-brand-light" src="{{ asset('assets-admin') }}/img/brand/dark.svg" alt="Volt logo" />
+        <a class="navbar-brand me-lg-5" href="{{ asset('assets-admin/index.html') }}">
+            <img class="navbar-brand-dark" src="{{ asset('assets-admin/assets/img/brand/light.svg') }}"
+                alt="Volt logo" /> <img class="navbar-brand-light"
+                src="{{ asset('assets-admin/assets/img/brand/dark.svg') }}" alt="Volt logo" />
         </a>
         <div class="d-flex align-items-center">
             <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
@@ -99,12 +101,12 @@
                 class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
                 <div class="d-flex align-items-center">
                     <div class="avatar-lg me-4">
-                        <img src="{{ asset('assets-admin') }}/img/team/profile-picture-3.jpg"
+                        <img src="{{ asset('assets-admin/assets/img/team/profile-picture-3.jpg') }}"
                             class="card-img-top rounded-circle border-white" alt="Bonnie Green">
                     </div>
                     <div class="d-block">
                         <h2 class="h5 mb-3">Hi, Jane</h2>
-                        <a href="../../pages/examples/sign-in.html"
+                        <a href="{{ asset('assets-admin/pages/examples/sign-in.html') }}"
                             class="btn btn-secondary btn-sm d-inline-flex align-items-center">
                             <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -128,18 +130,34 @@
                     </a>
                 </div>
             </div>
+
+            <li class="nav-item  active ">
+                <a href="" class="nav-link">
+                    <span class="sidebar-icon">
+                        <svg class="icon icon-xs me-2" data-slot="icon" fill="none" stroke-width="1.5"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z">
+                            </path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">Pelanggan</span>
+                </a>
+            </li>
+
             <ul class="nav flex-column pt-3 pt-md-0">
                 <li class="nav-item">
-                    <a href="../../index.html" class="nav-link d-flex align-items-center">
+                    <a href="{{ asset('assets-admin/index.html') }}" class="nav-link d-flex align-items-center">
                         <span class="sidebar-icon">
-                            <img src="{{ asset('assets-admin') }}/img/brand/light.svg" height="20" width="20"
-                                alt="Volt Logo">
+                            <img src="{{ asset('assets-admin/assets/img/brand/light.svg') }}" height="20"
+                                width="20" alt="Volt Logo">
                         </span>
                         <span class="mt-1 ms-1 sidebar-text">Volt Overview</span>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a href="../../pages/dashboard/dashboard.html" class="nav-link">
+                <li class="nav-item  active ">
+                    <a href="{{ asset('assets-admin/pages/dashboard/dashboard.html') }}" class="nav-link">
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -150,20 +168,42 @@
                         <span class="sidebar-text">Dashboard</span>
                     </a>
                 </li>
-                <li class="nav-item  active ">
-                    <a href="" class="nav-link">
-                        <span class="sidebar-icon">
-                            <svg class="icon icon-xs me-2" data-slot="icon" fill="none" stroke-width="1.5"
-                                stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z">
-                                </path>
+
+                <li class="nav-item">
+                    <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                        data-bs-toggle="collapse" data-bs-target="#submenu-app">
+                        <span>
+                            <span class="sidebar-icon">
+                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="sidebar-text">Tables</span>
+                        </span>
+                        <span class="link-arrow">
+                            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
                             </svg>
                         </span>
-                        <span class="sidebar-text">Pelanggan</span>
-                    </a>
+                    </span>
+                    <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
+                        <ul class="flex-column nav">
+                            <li class="nav-item ">
+                                <a class="nav-link"
+                                    href="{{ asset('assets-admin/pages/tables/bootstrap-tables.html') }}">
+                                    <span class="sidebar-text">Bootstrap Tables</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+
                 <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
                 <li class="nav-item">
                     <a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/getting-started/quick-start/"
@@ -180,17 +220,9 @@
                                 class="badge badge-sm bg-secondary ms-1 text-gray-800">v1.4</span></span>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a href="https://themesberg.com" target="_blank" class="nav-link d-flex align-items-center">
-                        <span class="sidebar-icon">
-                            <img src="{{ asset('assets-admin') }}/img/themesberg.svg" height="20" width="28"
-                                alt="Themesberg Logo">
-                        </span>
-                        <span class="sidebar-text">Themesberg</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../../pages/upgrade-to-pro.html"
+                    <a href="{{ asset('assets-admin/pages/upgrade-to-pro.html') }}"
                         class="btn btn-secondary d-flex align-items-center justify-content-center btn-upgrade-pro">
                         <span class="sidebar-icon d-inline-flex align-items-center justify-content-center">
                             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
@@ -203,6 +235,7 @@
                         <span>Upgrade to Pro</span>
                     </a>
                 </li>
+
             </ul>
         </div>
     </nav>
@@ -253,7 +286,7 @@
                                             <div class="col-auto">
                                                 <!-- Avatar -->
                                                 <img alt="Image placeholder"
-                                                    src="{{ asset('assets-admin') }}/img/team/profile-picture-1.jpg"
+                                                    src="{{ asset('assets-admin/assets/img/team/profile-picture-1.jpg') }}"
                                                     class="avatar-md rounded">
                                             </div>
                                             <div class="col ps-0 ms-2">
@@ -275,7 +308,7 @@
                                             <div class="col-auto">
                                                 <!-- Avatar -->
                                                 <img alt="Image placeholder"
-                                                    src="{{ asset('assets-admin') }}/img/team/profile-picture-2.jpg"
+                                                    src="{{ asset('assets-admin/assets/img/team/profile-picture-2.jpg') }}"
                                                     class="avatar-md rounded">
                                             </div>
                                             <div class="col ps-0 ms-2">
@@ -297,7 +330,7 @@
                                             <div class="col-auto">
                                                 <!-- Avatar -->
                                                 <img alt="Image placeholder"
-                                                    src="{{ asset('assets-admin') }}/img/team/profile-picture-3.jpg"
+                                                    src="{{ asset('assets-admin/assets/img/team/profile-picture-3.jpg') }}"
                                                     class="avatar-md rounded">
                                             </div>
                                             <div class="col ps-0 m-2">
@@ -319,7 +352,7 @@
                                             <div class="col-auto">
                                                 <!-- Avatar -->
                                                 <img alt="Image placeholder"
-                                                    src="{{ asset('assets-admin') }}/img/team/profile-picture-4.jpg"
+                                                    src="{{ asset('assets-admin/assets/img/team/profile-picture-4.jpg') }}"
                                                     class="avatar-md rounded">
                                             </div>
                                             <div class="col ps-0 ms-2">
@@ -341,7 +374,7 @@
                                             <div class="col-auto">
                                                 <!-- Avatar -->
                                                 <img alt="Image placeholder"
-                                                    src="{{ asset('assets-admin') }}/img/team/profile-picture-5.jpg"
+                                                    src="{{ asset('assets-admin/assets/img/team/profile-picture-5.jpg') }}"
                                                     class="avatar-md rounded">
                                             </div>
                                             <div class="col ps-0 ms-2">
@@ -376,7 +409,7 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="media d-flex align-items-center">
                                     <img class="avatar rounded-circle" alt="Image placeholder"
-                                        src="{{ asset('assets-admin') }}/img/team/profile-picture-3.jpg">
+                                        src="{{ asset('assets-admin/assets/img/team/profile-picture-3.jpg') }}">
                                     <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                                         <span class="mb-0 font-small fw-bold text-gray-900">Bonnie Green</span>
                                     </div>
@@ -456,111 +489,115 @@
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
                     <h1 class="h4">Tambah Pelanggan</h1>
-                    <p class="mb-0">Form untuk menambahkan data pelanggan baru.</p>
+                    <p class="mb-0">Form untuk menambahkan data pelangan baru</p>
                 </div>
                 <div>
                     <a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/forms/"
-                        class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>
+                        class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali </a>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12 mb-4">
-                <div class="card border-0 shadow-sm">
+                <div class="card border-0 shadow components-section">
                     <div class="card-body">
-                        @if(session('success'))
-                        <div class="alert alert-info">
-                            {!! session('success') !!}
-                        </div>
-                        @endif
-
-                        <h5 class="mb-4 fw-semibold">Form Tambah Pelanggan</h5>
-
                         <form action="{{ route('pelanggan.store') }}" method="POST">
                             @csrf
-
-                            <div class="row g-3">
-                                <div class="col-md-4">
-                                    <label for="first_name" class="form-label">First name</label>
-                                    <input type="text"
-                                        class="form-control @error('first_name') is-invalid @enderror" id="first_name"
-                                        name="first_name" value="{{ old('first_name') }}"
-                                        placeholder="Masukkan nama depan" required>
+                            <div class="row mb-4">
+                                <div class="col-lg-4 col-sm-6 mb-3">
+                                    <label for="firstName">First name</label>
+                                    <input type="text" class="form-control" id="firstName" name="first_name"
+                                        value="{{ old('first_name') }}" required>
                                     @error('first_name')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
-                                <div class="col-md-4">
-                                    <label for="birthday" class="form-label">Birthday</label>
-                                    <input type="date" class="form-control @error('birthday') is-invalid @enderror"
-                                        id="birthday" name="birthday" value="{{ old('birthday') }}" required>
+                                <div class="col-lg-4 col-sm-6 mb-3">
+                                    <label for="birthday">Birthday</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <svg class="icon icon-xs text-gray-600" fill="currentColor"
+                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </span>
+                                        <input data-datepicker class="form-control" id="birthday" name="birthday"
+                                            type="text" placeholder="dd/mm/yyyy" value="{{ old('birthday') }}"
+                                            required>
+                                    </div>
                                     @error('birthday')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
-                                <div class="col-md-4">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                        id="email" name="email" value="{{ old('email') }}"
-                                        placeholder="nama@email.com" required>
+                                <div class="col-lg-4 col-sm-6 mb-3">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        value="{{ old('email') }}" required>
                                     @error('email')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+                            </div>
 
-                                <div class="col-md-4">
-                                    <label for="last_name" class="form-label">Last name</label>
-                                    <input type="text"
-                                        class="form-control @error('last_name') is-invalid @enderror" id="last_name"
-                                        name="last_name" value="{{ old('last_name') }}"
-                                        placeholder="Masukkan nama belakang">
+                            <div class="row mb-4">
+                                <div class="col-lg-4 col-sm-6 mb-3">
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" class="form-control" id="lastName" name="last_name"
+                                        value="{{ old('last_name') }}" required>
                                     @error('last_name')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
-                                <div class="col-md-4">
-                                    <label for="gender" class="form-label">Gender</label>
-                                    <select class="form-select @error('gender') is-invalid @enderror" id="gender"
-                                        name="gender" required>
+                                <div class="col-lg-4 col-sm-6 mb-3">
+                                    <label for="gender">Gender</label>
+                                    <select class="form-control" id="gender" name="gender" required>
                                         <option value="">-- Pilih --</option>
-                                        <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male
+                                        <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male
                                         </option>
-                                        <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>
+                                        <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>
                                             Female</option>
-                                        <option value="Other" {{ old('gender') == 'Other' ? 'selected' : '' }}>Other
+                                        <option value="other" {{ old('gender') == 'other' ? 'selected' : '' }}>Other
                                         </option>
                                     </select>
                                     @error('gender')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
-                                <div class="col-md-4">
-                                    <label for="phone" class="form-label">Phone</label>
-                                    <input type="tel" class="form-control @error('phone') is-invalid @enderror"
-                                        id="phone" name="phone" value="{{ old('phone') }}"
-                                        placeholder="08123456789" required>
+                                <div class="col-lg-4 col-sm-6 mb-3">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" class="form-control" id="phone" name="phone"
+                                        value="{{ old('phone') }}" required>
                                     @error('phone')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
 
-                            <div class="d-flex justify-content-end mt-4">
-                                <button type="submit" class="btn btn-primary me-2">Simpan</button>
-                                <a href="{{ route('pelanggan.index') }}" class="btn btn-outline-secondary">Batal</a>
-                            </div>
+                            <button type="submit" class="btn btn-dark">Simpan</button>
+                            <button type="reset" class="btn btn-warning ms-2">Batal</button>
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
 
+
+        <div class="card theme-settings bg-gray-800 theme-settings-expand" id="theme-settings-expand">
+            <div class="card-body bg-gray-800 text-white rounded-top p-3 py-2">
+                <span class="fw-bold d-inline-flex align-items-center h6">
+                    <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    Settings
+                </span>
+            </div>
+        </div>
 
         <footer class="bg-white rounded shadow p-5 mb-4 mt-4">
             <div class="row">
@@ -591,45 +628,45 @@
     </main>
 
     <!-- Core -->
-    <script src="{{ asset('assets-admin') }}/vendor/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="{{ asset('assets-admin') }}/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets-admin/vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
+    <script src="assets-admin/vendor/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 
     <!-- Vendor JS -->
-    <script src="{{ asset('assets-admin') }}/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+    <script src="{{ asset('assets-admin/vendor/onscreen/dist/on-screen.umd.min.js') }}"></script>
 
     <!-- Slider -->
-    <script src="{{ asset('assets-admin') }}/vendor/nouislider/distribute/nouislider.min.js"></script>
+    <script src="{{ asset('assets-admin/vendor/nouislider/dist/nouislider.min.js') }}"></script>
 
     <!-- Smooth scroll -->
-    <script src="{{ asset('assets-admin') }}/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="{{ asset('assets-admin/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
 
     <!-- Charts -->
-    <script src="{{ asset('assets-admin') }}/vendor/chartist/dist/chartist.min.js"></script>
-    <script src="{{ asset('assets-admin') }}/vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="{{ asset('assets-admin/vendor/chartist/dist/chartist.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
 
     <!-- Datepicker -->
-    <script src="{{ asset('assets-admin') }}/vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+
 
     <!-- Sweet Alerts 2 -->
-    <script src="{{ asset('assets-admin') }}/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="{{ asset('assets-admin/vendor/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
 
     <!-- Moment JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js')}}"></script>
 
     <!-- Vanilla JS Datepicker -->
-    <script src="{{ asset('assets-admin') }}/vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+    <script src="{{ asset('assets-admin/vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
 
     <!-- Notyf -->
-    <script src="{{ asset('assets-admin') }}/vendor/notyf/notyf.min.js"></script>
+    <script src="{{ asset('assets-admin/vendor/notyf/notyf.min.js') }}"></script>
 
     <!-- Simplebar -->
-    <script src="{{ asset('assets-admin') }}/vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="{{ asset('assets-admin/vendor/simplebar/dist/simplebar.min.js') }}"></script>
 
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <!-- Volt JS -->
-    <script src="{{ asset('assets-admin') }}/js/volt.js"></script>
+    <script src="{{ asset('assets-admin/assets/js/volt.js') }}"></script>
 
 
 </body>

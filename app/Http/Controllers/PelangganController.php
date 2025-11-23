@@ -16,7 +16,7 @@ class PelangganController extends Controller
         $pageData['dataPelanggan'] = Pelanggan::filter($request, $filterableColumns)->
             search($request, $searchableColumns)->
             paginate(10)->WithQueryString();
-        return view('Admin.pelanggan.index', $pageData);
+        return view('admin.pelanggan.index', $pageData);
     }
 
     /**
@@ -24,7 +24,7 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        return view('Admin.pelanggan.create');
+        return view('admin.pelanggan.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class PelangganController extends Controller
     public function edit(string $id)
     {
         $data['dataPelanggan'] = Pelanggan::findOrFail($id);
-        return view('Admin.pelanggan.edit', $data);
+        return view('admin.pelanggan.edit', $data);
     }
 
     /**
