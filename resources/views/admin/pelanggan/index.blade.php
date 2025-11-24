@@ -24,7 +24,8 @@
                 <p class="mb-0">Kelola data pelanggan sistem.</p>
             </div>
             <div>
-                <a href="{{ route('pelanggan.create') }}" class="btn btn-success"><i class="fas fa-plus me-1"></i> Tambah Pelanggan</a>
+                <a href="{{ route('pelanggan.create') }}" class="btn btn-success"><i class="fas fa-plus me-1"></i> Tambah
+                    Pelanggan</a>
             </div>
         </div>
     </div>
@@ -42,8 +43,8 @@
 
             <div class="col-md-3">
                 <div class="input-group">
-                    <input type="text" name="search" class="form-control"
-                        value="{{ request('search') }}" placeholder="Search...">
+                    <input type="text" name="search" class="form-control" value="{{ request('search') }}"
+                        placeholder="Search...">
 
                     <button type="submit" class="input-group-text">
                         <i class="fas fa-search"></i>
@@ -80,6 +81,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th class="border-0 rounded-start">#</th>
+                                    <th class="border-0">Foto</th>
                                     <th class="border-0">First Name</th>
                                     <th class="border-0">Last Name</th>
                                     <th class="border-0">Birthday</th>
@@ -90,39 +92,64 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @forelse ($dataPelanggan as $pelanggan)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $pelanggan->first_name }}</td>
-                                    <td>{{ $pelanggan->last_name }}</td>
-                                    <td>{{ $pelanggan->birthday }}</td>
-                                    <td>{{ $pelanggan->gender }}</td>
-                                    <td>{{ $pelanggan->email }}</td>
-                                    <td>{{ $pelanggan->phone }}</td>
-                                    <td>
-                                        <a href="{{ route('pelanggan.edit', $pelanggan->pelanggan_id) }}" class="btn btn-sm btn-primary me-1">
-                                            <i class="fas fa-edit"></i> Edit
-                                        </a>
-                                        <form action="{{ route('pelanggan.destroy', $pelanggan->pelanggan_id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                <i class="fas fa-trash"></i> Delete
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+
+                                        {{-- FOTO PERTAMA --}}
+                                        <td>
+                                            @php
+                                                $photos = $pelanggan->photos; // sudah array
+                                            @endphp
+
+
+                                            @if ($photos && count($photos) > 0)
+                                                <img src="{{ asset('storage/' . $photos[0]) }}" alt="Foto"
+                                                    class="rounded" width="45" height="45"
+                                                    style="object-fit: cover;">
+                                            @else
+                                                <span class="text-muted">-</span>
+                                            @endif
+                                        </td>
+
+                                        <td>{{ $pelanggan->first_name }}</td>
+                                        <td>{{ $pelanggan->last_name }}</td>
+                                        <td>{{ $pelanggan->birthday }}</td>
+                                        <td>{{ $pelanggan->gender }}</td>
+                                        <td>{{ $pelanggan->email }}</td>
+                                        <td>{{ $pelanggan->phone }}</td>
+
+                                        <td>
+                                            <a href="{{ route('pelanggan.edit', $pelanggan->pelanggan_id) }}"
+                                                class="btn btn-sm btn-primary me-1">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <form action="{{ route('pelanggan.destroy', $pelanggan->pelanggan_id) }}"
+                                                method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+
                                 @empty
-                                <tr>
-                                    <td colspan="8" class="text-center py-4">
-                                        <div class="text-muted">
-                                            <i class="fas fa-users fa-3x mb-3"></i>
-                                            <p>Belum ada data pelanggan</p>
-                                            <a href="{{ route('pelanggan.create') }}" class="btn btn-primary">Tambah Pelanggan Pertama</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="9" class="text-center py-4">
+                                            <div class="text-muted">
+                                                <i class="fas fa-users fa-3x mb-3"></i>
+                                                <p>Belum ada data pelanggan</p>
+                                                <a href="{{ route('pelanggan.create') }}" class="btn btn-primary">Tambah
+                                                    Pelanggan Pertama</a>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforelse
+
                             </tbody>
                         </table>
                     </div>
