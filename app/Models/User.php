@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_picture', // Ditambahkan untuk upload foto
     ];
 
     /**
@@ -46,6 +47,9 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Scope untuk filter data
+     */
     public function scopeFilter(Builder $query, $request, array $filterableColumns): Builder
     {
         foreach ($filterableColumns as $column) {
@@ -68,7 +72,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Search global (name, email)
+     * Scope untuk search global (name, email)
      */
     public function scopeSearch(Builder $query, $request, array $columns): Builder
     {
@@ -81,5 +85,63 @@ class User extends Authenticatable
         }
 
         return $query;
+    }
+
+    /**
+     * Accessor untuk mendapatkan URL foto profil
+     */
+    public function getProfilePictureUrlAttribute(): ?string
+    {
+        if (!$this->profile_picture) {
+            return null;
+        }
+
+        return asset('storage/uploads/profile/' . $this->profile_picture);
+    }
+
+    /**
+     * Method untuk menghapus foto profil
+     */
+    public function deleteProfilePicture(): bool
+    {
+        if (!$this->profile_picture) {
+            return false;
+        }
+
+        $filePath = storage_path('app/public/uploads/profile/' . $this->profile_picture);
+
+        if (file_exists($filePath)) {
+            unlink($filePath);
+            $this->profile_picture = null;
+            return $this->save();
+        }
+
+        return false;
+    }
+
+    /**
+     * Method untuk mengecek apakah user memiliki foto profil
+     */
+    public function hasProfilePicture(): bool
+    {
+        return !empty($this->profile_picture);
+    }
+
+    /**
+     * Boot method untuk event handling
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Hapus file foto ketika user dihapus
+        static::deleting(function ($user) {
+            if ($user->profile_picture) {
+                $filePath = storage_path('app/public/uploads/profile/' . $user->profile_picture);
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+            }
+        });
     }
 }

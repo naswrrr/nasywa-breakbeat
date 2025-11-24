@@ -83,8 +83,10 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th class="border-0 rounded-start">#</th>
+                                    <th class="border-0">Foto</th>
                                     <th class="border-0">Nama</th>
                                     <th class="border-0">Email</th>
+                                    <th class="border-0">Status Verifikasi</th>
                                     <th class="border-0">Dibuat</th>
                                     <th class="border-0 rounded-end">Aksi</th>
                                 </tr>
@@ -93,8 +95,27 @@
                                 @forelse ($dataUser as $user)
                                 <tr>
                                     <td>{{ $loop->iteration + ($dataUser->currentPage() - 1) * $dataUser->perPage() }}</td>
+                                    <td>
+                                        {{-- FOTO PROFIL --}}
+                                        <img
+                                            src="{{ $user->profile_picture
+                                                ? asset('storage/uploads/profile/'.$user->profile_picture)
+                                                : asset('assets-admin/img/profile.jpg') }}"
+                                            width="40"
+                                            height="40"
+                                            class="rounded-circle object-fit-cover"
+                                            alt="{{ $user->name }}"
+                                        >
+                                    </td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>
+                                        @if($user->email_verified_at)
+                                            <span class="badge bg-success">Verified</span>
+                                        @else
+                                            <span class="badge bg-warning">Not Verified</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $user->created_at->format('Y-m-d') }}</td>
                                     <td>
                                         <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary me-1">
@@ -113,7 +134,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="5" class="text-center py-4">
+                                    <td colspan="7" class="text-center py-4">
                                         <div class="text-muted">
                                             <i class="fas fa-users fa-3x mb-3"></i>
                                             <p>Belum ada user</p>
