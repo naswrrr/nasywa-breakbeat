@@ -1,22 +1,29 @@
 <?php
-namespace Database\Factories;
 
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Faker\Factory as Faker;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class UserFactory extends Seeder
 {
-    protected $model = User::class;
-
-    public function definition(): array
+    public function run(): void
     {
-        return [
-            'name'           => fake()->name(),
-            'email'          => strtolower(fake()->userName()) . '+' . uniqid() . '@mail.com',
-            'email_verified_at' => now(),
-            'password'       => bcrypt('password'),
-            'remember_token' => Str::random(10),
-        ];
+        $faker = Faker::create();
+       // Buat 1000 user lainnya
+        for ($i = 0; $i < 1000; $i++) {
+            User::create([
+                'name' => $faker->firstName . ' ' . $faker->lastName,
+                'email' => $faker->unique()->safeEmail(),
+                'password' => Hash::make('password123'),
+                'role' => $faker->randomElement(['admin', 'pegawai']),
+                'status' => $faker->randomElement(['active', 'inactive']),
+            ]);
+        }
+
+        // Reset faker unique cache
+        $faker->unique(true);
     }
 }

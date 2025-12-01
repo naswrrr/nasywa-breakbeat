@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-{{-- sesuaikan layout kamu --}}
 
 @section('content')
 <div class="py-4">

@@ -24,39 +24,10 @@
                 <p class="mb-0">Kelola data pelanggan sistem.</p>
             </div>
             <div>
-                <a href="{{ route('pelanggan.create') }}" class="btn btn-success"><i class="fas fa-plus me-1"></i> Tambah
-                    Pelanggan</a>
+                <a href="{{ route('pelanggan.create') }}" class="btn btn-success"><i class="fas fa-plus me-1"></i> Tambah Pelanggan</a>
             </div>
         </div>
     </div>
-
-    {{-- 🔍 FILTER & SEARCH --}}
-    <form method="GET" action="{{ route('pelanggan.index') }}" class="mb-4">
-        <div class="row">
-            <div class="col-md-2">
-                <select name="gender" class="form-select" onchange="this.form.submit()">
-                    <option value="">All Gender</option>
-                    <option value="Male" {{ request('gender') == 'Male' ? 'selected' : '' }}>Male</option>
-                    <option value="Female" {{ request('gender') == 'Female' ? 'selected' : '' }}>Female</option>
-                </select>
-            </div>
-
-            <div class="col-md-3">
-                <div class="input-group">
-                    <input type="text" name="search" class="form-control" value="{{ request('search') }}"
-                        placeholder="Search...">
-
-                    <button type="submit" class="input-group-text">
-                        <i class="fas fa-search"></i>
-                    </button>
-
-                    @if (request('search'))
-                        <a href="{{ route('pelanggan.index') }}" class="btn btn-outline-secondary ms-2">Clear</a>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </form>
 
     <div class="row">
         <div class="col-12 mb-4">
@@ -77,11 +48,33 @@
                     @endif
 
                     <div class="table-responsive">
+                        <form method="GET" action="{{ route('pelanggan.index') }}" onchange="this.form.submit()" class="mb-3">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <select name="gender" class="form-select">
+                                        <option value="">All</option>
+                                        <option value="Male" {{ request('gender')=='Male' ? 'selected' : '' }}>Male</option>
+                                        <option value="Female" {{ request('gender')=='Female' ? 'selected' : '' }}>Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                <div class="input-group">
+                                    <input type="text" name="search" class="form-control" id="exampleInputIconRight" value="{{request('search')}}" placeholder="Search" aria-label="Search">
+                                    <button type="submit" class="input-group-text" id="basic-addon2">
+                                        @if(request('search'))
+                                        	<a href="{{ request()->fullUrlWithQuery(['search'=> null]) }}" class="btn btn-outline-secondary ml-3" id="clear-search"> Clear</a>
+                                        @endif
+                                    <svg class="icon icon-xxs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
                         <table class="table table-centered table-nowrap mb-0 rounded">
                             <thead class="thead-light">
                                 <tr>
                                     <th class="border-0 rounded-start">#</th>
-                                    <th class="border-0">Foto</th>
                                     <th class="border-0">First Name</th>
                                     <th class="border-0">Last Name</th>
                                     <th class="border-0">Birthday</th>
@@ -92,73 +85,48 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @forelse ($dataPelanggan as $pelanggan)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-
-                                        {{-- FOTO PERTAMA --}}
-                                        <td>
-                                            @php
-                                                $photos = $pelanggan->photos; // sudah array
-                                            @endphp
-
-
-                                            @if ($photos && count($photos) > 0)
-                                                <img src="{{ asset('storage/' . $photos[0]) }}" alt="Foto"
-                                                    class="rounded" width="45" height="45"
-                                                    style="object-fit: cover;">
-                                            @else
-                                                <span class="text-muted">-</span>
-                                            @endif
-                                        </td>
-
-                                        <td>{{ $pelanggan->first_name }}</td>
-                                        <td>{{ $pelanggan->last_name }}</td>
-                                        <td>{{ $pelanggan->birthday }}</td>
-                                        <td>{{ $pelanggan->gender }}</td>
-                                        <td>{{ $pelanggan->email }}</td>
-                                        <td>{{ $pelanggan->phone }}</td>
-
-                                        <td>
-                                            <a href="{{ route('pelanggan.edit', $pelanggan->pelanggan_id) }}"
-                                                class="btn btn-sm btn-primary me-1">
-                                                <i class="fas fa-edit"></i> Edit
-                                            </a>
-                                            <form action="{{ route('pelanggan.destroy', $pelanggan->pelanggan_id) }}"
-                                                method="POST" class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger"
-                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                    <i class="fas fa-trash"></i> Delete
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-
+                                 @forelse ($dataPelanggan as $pelanggan)
+                                <tr>
+                                    <td>{{ ($dataPelanggan->currentPage() - 1) * $dataPelanggan->perPage() + $loop->iteration }}</td>
+                                    <td>{{ $pelanggan->first_name }}</td>
+                                    <td>{{ $pelanggan->last_name }}</td>
+                                    <td>{{ $pelanggan->birthday }}</td>
+                                    <td>{{ $pelanggan->gender }}</td>
+                                    <td>{{ $pelanggan->email }}</td>
+                                    <td>{{ $pelanggan->phone }}</td>
+                                    <td>
+                                        <a href="{{ route('pelanggan.edit', $pelanggan->pelanggan_id) }}" class="btn btn-sm btn-primary me-1">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <form action="{{ route('pelanggan.destroy', $pelanggan->pelanggan_id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
                                 @empty
-                                    <tr>
-                                        <td colspan="9" class="text-center py-4">
-                                            <div class="text-muted">
-                                                <i class="fas fa-users fa-3x mb-3"></i>
-                                                <p>Belum ada data pelanggan</p>
-                                                <a href="{{ route('pelanggan.create') }}" class="btn btn-primary">Tambah
-                                                    Pelanggan Pertama</a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td colspan="8" class="text-center py-4">
+                                        <div class="text-muted">
+                                            <i class="fas fa-users fa-3x mb-3"></i>
+                                            <p>Belum ada data pelanggan</p>
+                                            <a href="{{ route('pelanggan.create') }}" class="btn btn-primary">Tambah Pelanggan Pertama</a>
+                                        </div>
+                                    </td>
+                                </tr>
                                 @endforelse
-
                             </tbody>
                         </table>
                     </div>
-
-                    {{-- 📌 PAGINATION --}}
-                    <div class="mt-3">
-                        {{ $dataPelanggan->appends(request()->query())->links('pagination::bootstrap-5') }}
+                    <div class="mt-3 d-flex justify-content-end">
+                        {{ $dataPelanggan->links('pagination::simple-bootstrap-5') }}
                     </div>
-
+                    <div class="text-muted small">
+                        Showing {{ $dataPelanggan->firstItem() }} to {{ $dataPelanggan->lastItem() }} of {{ $dataPelanggan->total() }} entries
+                    </div>
                 </div>
             </div>
         </div>
